@@ -1,62 +1,64 @@
+import RansomNote from "@/components/RansomNote";
+
 export const metadata = { title: "Gift — Women of Punk" };
 
 export default function GiftPage() {
   return (
-    <>
-      <section className="paper-bg py-16">
-        <div className="max-w-3xl mx-auto px-4">
+    <div className="page-static-in">
+      <section className="paper-bg py-20">
+        <div
+          className="mx-auto px-4"
+          style={{ maxWidth: "560px" }}
+        >
           <div className="sticker mb-6 inline-block">A Note, Stapled In</div>
 
-          <article className="zine-card tilt-l relative">
-            <span className="tape absolute -top-3 left-10" aria-hidden />
-            <span className="tape yellow right absolute -top-3 right-10" aria-hidden />
-
+          <article className="letter-paper">
             <h1
-              className="shout text-6xl md:text-7xl tracking-razor leading-[0.85]"
-              style={{ transform: "rotate(-1deg)" }}
+              className="block"
+              style={{ fontSize: "clamp(2.75rem, 8vw, 4.5rem)", lineHeight: 0.9 }}
             >
-              FOR <span className="text-blood">SOMEONE</span>
-              <br />WHO DESERVES
-              <br />A MONUMENT.
+              <RansomNote text="FOR HER." letterBreakBelow={5} />
             </h1>
 
-            <div className="censor-bar mt-6 max-w-sm" />
+            <div className="censor-bar mt-6 max-w-[180px]" />
 
-            <div className="type text-lg leading-relaxed mt-6 space-y-4">
+            <div
+              className="type text-[1.05rem] md:text-[1.15rem] leading-[1.65] mt-6 space-y-5"
+              style={{ transform: "rotate(-0.6deg) translateX(-2px)", transformOrigin: "top left" }}
+            >
               <p>
-                This was built as a gift for someone who&rsquo;s awesome. You
-                know who you are. The internet doesn&rsquo;t need to.
+                Built for someone who deserves a monument and got a website.
               </p>
               <p>
-                Punk has always belonged to the people who needed it most, and
-                history has been bad at remembering which people those were.
-                This site is one small correction. It will never be done. That
-                also is the point.
+                The list is incomplete. The history is bigger than this. You
+                already know that.
               </p>
               <p>
                 Everything here is rough on purpose. Crooked on purpose. Loud on
                 purpose. If something&rsquo;s missing — and a lot is missing —
-                that&rsquo;s an invitation, not an oversight. Hand it to the
-                next person who needs it.
+                that&rsquo;s an invitation, not an oversight.
               </p>
-              <p className="shout text-2xl tracking-wide mt-6">
-                With love, and a slight rotation.
+              <p>
+                Hand it to the next person who needs it.
+              </p>
+              <p className="text-right pt-2">
+                <span className="opacity-80">— your friend</span>
               </p>
             </div>
 
             <div className="rule-red mt-8" />
-            <p className="type text-xs opacity-70 mt-3">
+            <p className="font-body text-[0.7rem] uppercase tracking-[0.12em] opacity-60 mt-3">
               Filed under: things that should have been said earlier.
             </p>
           </article>
 
           <div className="mt-10 text-center">
-            <p className="shout text-3xl tracking-razor">
-              <span className="text-blood">P.S.</span> Turn It Up.
+            <p className="font-body text-xs uppercase tracking-[0.18em] opacity-60">
+              no rights reserved. take and remix.
             </p>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

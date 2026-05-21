@@ -1,8 +1,11 @@
 import Link from "next/link";
+import RansomNote from "@/components/RansomNote";
+import Waveform from "@/components/Waveform";
+import Typewriter from "@/components/Typewriter";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="page-static-in">
       {/* HERO */}
       <section className="ink-bg text-paper relative overflow-hidden torn-bottom pb-24">
         <div className="max-w-6xl mx-auto px-4 pt-14 pb-20 relative">
@@ -11,33 +14,46 @@ export default function HomePage() {
 
           <div className="sticker mb-6 inline-block">Issue No. 01 — A History in Noise</div>
 
+          {/* Ransom-note headline: WOMEN. OF. PUNK. */}
           <h1
-            className="shout-tight text-[18vw] md:text-[12rem] leading-[0.78] tracking-razor"
-            style={{ transform: "rotate(-1.5deg)" }}
+            className="block leading-[0.8]"
+            style={{ fontSize: "clamp(3.5rem, 13vw, 10rem)" }}
           >
-            <span className="block">WOMEN</span>
             <span className="block">
-              OF <span className="text-blood">PUNK</span>
+              <RansomNote text="WOMEN." letterBreakBelow={6} />
+            </span>
+            <span className="block mt-2">
+              <RansomNote text="OF." letterBreakBelow={6} />
+            </span>
+            <span className="block mt-2">
+              <RansomNote text="PUNK." letterBreakBelow={6} />
             </span>
           </h1>
 
           <div className="censor-bar mt-8 max-w-xl" />
 
-          <p className="type text-lg md:text-2xl max-w-2xl mt-4">
-            They didn&rsquo;t ask for a seat. They built the room, set it on
-            fire, and stayed to watch it burn.
+          {/* Typewriter sub-headline */}
+          <p className="type text-lg md:text-2xl max-w-3xl mt-4">
+            <Typewriter text="A HISTORY IN NOISE. A LOVE LETTER IN BLOOD RED." />
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/sound" className="shout text-2xl bg-paper text-ink px-4 py-2 hover:bg-blood hover:text-paper transition-colors">
-              Hear It
-            </Link>
-            <Link href="/screen" className="shout text-2xl bg-blood text-paper px-4 py-2 hover:bg-paper hover:text-ink transition-colors">
-              See It
-            </Link>
-            <Link href="/page" className="shout text-2xl border-2 border-paper px-4 py-2 hover:bg-paper hover:text-ink transition-colors">
-              Read It
-            </Link>
+          <p className="font-body text-base md:text-lg max-w-2xl mt-6 opacity-90 leading-relaxed">
+            The bands they refused to canonize. The records that got buried by
+            boys with bigger labels. The films, the books, the zines, the
+            spoken-out-loud-on-stage receipts. Forty-plus years of women who
+            didn&rsquo;t ask permission and don&rsquo;t need yours either.
+          </p>
+
+          {/* Joy Division waveform between hero text and CTAs */}
+          <div className="mt-12 waveform-block">
+            <Waveform lines={70} height={260} />
+          </div>
+
+          {/* Censor-bar CTA row */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Link href="/sound" className="cta-bar">SOUND</Link>
+            <Link href="/screen" className="cta-bar alt">SCREEN</Link>
+            <Link href="/page" className="cta-bar outline">PAGE</Link>
           </div>
 
           {/* Ransom-note callout */}
@@ -133,7 +149,7 @@ export default function HomePage() {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Anton, Inter, Special_Elite } from "next/font/google";
+import { Anton, Inter, Special_Elite, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Grain from "@/components/Grain";
+import TransitionFlash from "@/components/TransitionFlash";
 
 const anton = Anton({
   weight: "400",
@@ -24,6 +26,13 @@ const inter = Inter({
   display: "swap"
 });
 
+const dmSerif = DM_Serif_Display({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-dm-serif",
+  display: "swap"
+});
+
 export const metadata: Metadata = {
   title: "Women of Punk — A History in Noise",
   description:
@@ -41,11 +50,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${anton.variable} ${specialElite.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${anton.variable} ${specialElite.variable} ${inter.variable} ${dmSerif.variable}`}
+    >
       <body className="paper-bg min-h-screen flex flex-col font-body">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Grain />
+        <TransitionFlash />
       </body>
     </html>
   );

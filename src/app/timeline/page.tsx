@@ -1,3 +1,6 @@
+import Waveform from "@/components/Waveform";
+import RansomNote from "@/components/RansomNote";
+
 export const metadata = { title: "Timeline — Women of Punk" };
 
 type Era = {
@@ -5,6 +8,8 @@ type Era = {
   headline: string;
   body: string;
   red?: boolean;
+  /** Decade marker — if set, render a waveform + ransom heading BEFORE this entry */
+  decadeBreak?: string;
 };
 
 const eras: Era[] = [
@@ -13,7 +18,8 @@ const eras: Era[] = [
     headline: "BEFORE THE WORD",
     body:
       "Patti Smith fronts a band downtown. Suzi Quatro is already in leather. The Runaways form in California — the wedge starts going in before anyone agrees on the name for what&rsquo;s coming.",
-    red: true
+    red: true,
+    decadeBreak: "1970s."
   },
   {
     year: "1976",
@@ -38,14 +44,16 @@ const eras: Era[] = [
     year: "1980s",
     headline: "HARDCORE AND AFTER",
     body:
-      "Hardcore tries to lock the door again. Women kick it back open: Penelope Houston, Exene, Kira Roessler, Wendy O. Williams, Poly Styrene returning. The next wave keeps writing."
+      "Hardcore tries to lock the door again. Women kick it back open: Penelope Houston, Exene, Kira Roessler, Wendy O. Williams, Poly Styrene returning. The next wave keeps writing.",
+    decadeBreak: "1980s."
   },
   {
     year: "1991",
     headline: "REVOLUTION GIRL STYLE NOW",
     body:
       "Bikini Kill, Bratmobile, Heavens to Betsy, Huggy Bear. Olympia, DC, Leeds. The zine network goes nuclear. &ldquo;Riot grrrl&rdquo; is suddenly a beat at every major paper.",
-    red: true
+    red: true,
+    decadeBreak: "1990s."
   },
   {
     year: "1993-96",
@@ -57,14 +65,16 @@ const eras: Era[] = [
     year: "2000s",
     headline: "QUIET FRONT, LOUD BACK",
     body:
-      "The press declares it over a dozen times. Meanwhile: Le Tigre, the Gossip, Erase Errata, Mika Miko. The networks built in 1991 keep paying out."
+      "The press declares it over a dozen times. Meanwhile: Le Tigre, the Gossip, Erase Errata, Mika Miko. The networks built in 1991 keep paying out.",
+    decadeBreak: "2000s."
   },
   {
     year: "2010s",
     headline: "RECEIPTS, AT VOLUME",
     body:
       "Savages, Priests, Big Joanie, Downtown Boys, G.L.O.S.S. Documentaries finally arrive. Memoirs land at Knopf. The canon is forced to update itself, slowly, with great complaint.",
-    red: true
+    red: true,
+    decadeBreak: "2010s."
   },
   {
     year: "NOW",
@@ -76,7 +86,7 @@ const eras: Era[] = [
 
 export default function TimelinePage() {
   return (
-    <>
+    <div className="page-static-in">
       <section className="ink-bg text-paper torn-bottom pb-16">
         <div className="max-w-6xl mx-auto px-4 pt-12">
           <div className="sticker mb-4">05 — Timeline</div>
@@ -101,6 +111,19 @@ export default function TimelinePage() {
           <ol className="relative border-l-4 border-ink pl-8 space-y-12">
             {eras.map((e, i) => (
               <li key={e.year} className="relative">
+                {e.decadeBreak && (
+                  <div className="-ml-10 mb-10">
+                    <div
+                      className="mb-4"
+                      style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)" }}
+                    >
+                      <RansomNote text={e.decadeBreak} letterBreakBelow={5} />
+                    </div>
+                    <div className="waveform-block">
+                      <Waveform lines={60} height={180} />
+                    </div>
+                  </div>
+                )}
                 <span
                   className={`absolute -left-[2.55rem] top-1 w-6 h-6 rotate-45 ${e.red ? "bg-blood" : "bg-ink"}`}
                   aria-hidden
@@ -125,6 +148,6 @@ export default function TimelinePage() {
           </ol>
         </div>
       </section>
-    </>
+    </div>
   );
 }

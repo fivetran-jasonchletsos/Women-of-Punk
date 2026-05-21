@@ -72,12 +72,13 @@ html, body {
   box-shadow: 6px 6px 0 var(--ink);
   position: relative;
   transform: rotate(-0.6deg);
-  transition: transform 200ms ease;
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .zine-card:hover {
   transform: rotate(0deg) translateY(-2px);
   box-shadow: 8px 8px 0 var(--blood);
+  animation: glitch-rgb 220ms steps(2, end) 1;
 }
 
 .zine-card.tilt-r {
@@ -111,6 +112,56 @@ html, body {
   background: var(--ink);
 }
 
+/* CTA censor-bar links — homepage SOUND/SCREEN/PAGE row */
+.cta-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-anton), Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  text-decoration: none;
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--blood);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
+  position: relative;
+}
+
+.cta-bar:hover {
+  background: var(--blood);
+  color: var(--paper);
+  transform: translate(-2px, -2px) rotate(-0.6deg);
+  box-shadow: 8px 8px 0 var(--ink);
+  animation: glitch-rgb 220ms steps(2, end) 1;
+}
+
+.cta-bar.alt {
+  background: var(--blood);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.cta-bar.alt:hover {
+  background: var(--ink);
+  box-shadow: 8px 8px 0 var(--blood);
+}
+
+.cta-bar.outline {
+  background: transparent;
+  color: var(--paper);
+  border-color: var(--paper);
+  box-shadow: 5px 5px 0 var(--paper);
+}
+
+.cta-bar.outline:hover {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 8px 8px 0 var(--blood);
+}
+
 .tape {
   position: absolute;
   width: 90px;
@@ -128,6 +179,45 @@ html, body {
 
 .tape.right {
   transform: rotate(7deg);
+}
+
+/* Pseudo-element tape pieces used on the gift letter */
+.letter-paper {
+  position: relative;
+  background: #faf6ec;
+  background-image:
+    radial-gradient(rgba(10,10,10,0.06) 1px, transparent 1px),
+    radial-gradient(rgba(10,10,10,0.04) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  padding: 3rem 2rem 2.5rem;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.06) inset,
+    0 22px 40px -18px rgba(0,0,0,0.45),
+    0 6px 10px -6px rgba(0,0,0,0.3);
+  transform: rotate(-0.6deg);
+}
+
+.letter-paper::before,
+.letter-paper::after {
+  content: "";
+  position: absolute;
+  top: -14px;
+  width: 110px;
+  height: 26px;
+  background: rgba(245, 241, 234, 0.85);
+  border: 1px solid rgba(10,10,10,0.15);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+.letter-paper::before {
+  left: 24px;
+  transform: rotate(-7deg);
+}
+
+.letter-paper::after {
+  right: 24px;
+  transform: rotate(6deg);
+  background: rgba(255, 220, 90, 0.7);
 }
 
 /* Torn paper bottom edge — zigzag clip-path */
@@ -172,6 +262,14 @@ html, body {
 .ransom > *:nth-child(3n) { transform: rotate(-2deg) translateY(-1px); }
 .ransom > *:nth-child(3n+1) { transform: rotate(1.5deg) translateY(1px); }
 .ransom > *:nth-child(5n) { background: var(--blood); color: var(--paper); padding: 0 0.12em; }
+
+/* Ransom-note component: shared niceties */
+.ransom-note {
+  word-spacing: 0;
+}
+.ransom-note .ransom-chunk {
+  letter-spacing: -0.01em;
+}
 
 /* Heavy black rule */
 .rule {
@@ -247,3 +345,168 @@ a.zine-link:hover {
 
 /* Slight skew utility */
 .skew-tiny { transform: skewY(-0.6deg); }
+
+/* =========================================================
+   Glitch RGB-split (on zine-card hover, cta-bar hover, etc.)
+   ========================================================= */
+@keyframes glitch-rgb {
+  0% {
+    text-shadow: 0 0 0 transparent;
+    filter: none;
+  }
+  20% {
+    text-shadow: -3px 0 0 #e10600, 3px 0 0 #00f0ea;
+    filter: contrast(1.2);
+  }
+  40% {
+    text-shadow: 3px 0 0 #e10600, -3px 0 0 #00f0ea;
+    transform: translate(1px, -1px) rotate(0deg);
+  }
+  60% {
+    text-shadow: -2px 1px 0 #e10600, 2px -1px 0 #00f0ea;
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+    filter: none;
+  }
+}
+
+/* GlitchHeadline component */
+.glitch-headline {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+.glitch-headline .glitch-layer {
+  display: inline-block;
+}
+.glitch-headline .glitch-r,
+.glitch-headline .glitch-c {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 80ms;
+}
+.glitch-headline:hover .glitch-r,
+.glitch-headline:hover .glitch-c {
+  opacity: 0.9;
+  animation: glitch-shift 220ms steps(2, end) 1;
+}
+.glitch-headline .glitch-r {
+  color: #e10600;
+  transform: translate(-3px, 0);
+}
+.glitch-headline .glitch-c {
+  color: #00f0ea;
+  transform: translate(3px, 0);
+}
+@keyframes glitch-shift {
+  0%   { transform: translate(-3px, 0); }
+  30%  { transform: translate(3px, -1px); }
+  60%  { transform: translate(-2px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* =========================================================
+   TransitionFlash — black-to-red flash + static dissolve
+   ========================================================= */
+.transition-flash {
+  background: transparent;
+  opacity: 0;
+}
+.transition-flash.is-active {
+  animation: tflash 480ms ease-out 1;
+}
+@keyframes tflash {
+  0%   { background: #000; opacity: 1; }
+  25%  { background: #e10600; opacity: 1; }
+  60%  { background: #e10600; opacity: 0.35; }
+  100% { background: transparent; opacity: 0; }
+}
+
+/* Per-page mount static dissolve */
+.page-static-in {
+  animation: page-static 460ms ease-out 1;
+}
+@keyframes page-static {
+  0%   { filter: contrast(1.4) brightness(0.4); opacity: 0; transform: translateY(4px); }
+  35%  { filter: contrast(1.2) brightness(0.85); opacity: 1; transform: none; }
+  100% { filter: none; opacity: 1; }
+}
+
+/* =========================================================
+   Voices page — quote-card treatment
+   ========================================================= */
+.quote-card {
+  position: relative;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  padding: 3.5rem 1.5rem 1.75rem 1.75rem;
+  box-shadow: 6px 6px 0 var(--ink);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  isolation: isolate;
+}
+.quote-card .qc-glyph {
+  position: absolute;
+  top: -42px;
+  left: -10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  font-size: 140px;
+  line-height: 0.6;
+  color: var(--blood);
+  text-shadow: 3px 3px 0 var(--ink);
+  pointer-events: none;
+  z-index: 2;
+}
+.quote-card .qc-body {
+  font-family: var(--font-special-elite), "Courier New", monospace;
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+.quote-card .qc-rule {
+  width: 80px;
+  border-top: 4px solid var(--blood);
+  margin: 1rem 0 0.4rem;
+}
+.quote-card .qc-speaker {
+  font-family: var(--font-anton), Impact, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.quote-card .qc-source {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.72rem;
+  opacity: 0.6;
+  margin-top: 0.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.quote-card:hover {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: 6px 6px 0 var(--ink), 12px 12px 0 var(--blood);
+}
+
+/* =========================================================
+   Waveform block frame
+   ========================================================= */
+.waveform-block {
+  background: #000;
+  padding: 1.25rem 0;
+  position: relative;
+}
+.waveform-block::before,
+.waveform-block::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: #000;
+}
+.waveform-block::before { top: 0; }
+.waveform-block::after  { bottom: 0; }
