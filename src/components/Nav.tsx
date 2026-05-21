@@ -6,6 +6,9 @@ const links = [
   { href: "/screen", label: "Screen" },
   { href: "/page", label: "Page" },
   { href: "/voices", label: "Voices" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/posters", label: "Posters" },
+  { href: "/stories", label: "Stories" },
   { href: "/timeline", label: "Timeline" }
 ];
 
