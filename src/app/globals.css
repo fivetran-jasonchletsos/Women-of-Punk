@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0a0a0a;
+  --paper: #f5f1ea;
+  --blood: #e10600;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--blood);
+  color: var(--paper);
+}
+
+/* Paper texture — subtle noise via SVG data URI, scrappy & cheap */
+.paper-bg {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(rgba(10,10,10,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(10,10,10,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 2px;
+}
+
+.ink-bg {
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(rgba(245,241,234,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(245,241,234,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+}
+
+/* Class tokens called out in the brief */
+
+.shout {
+  font-family: var(--font-anton), Impact, Haettenschweiler, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  font-weight: 400;
+}
+
+.shout-tight {
+  font-family: var(--font-anton), Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  font-weight: 400;
+}
+
+.type {
+  font-family: var(--font-special-elite), "Courier New", monospace;
+}
+
+.zine-card {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  padding: 1.25rem 1.25rem 1.5rem;
+  box-shadow: 6px 6px 0 var(--ink);
+  position: relative;
+  transform: rotate(-0.6deg);
+  transition: transform 200ms ease;
+}
+
+.zine-card:hover {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: 8px 8px 0 var(--blood);
+}
+
+.zine-card.tilt-r {
+  transform: rotate(0.8deg);
+}
+
+.zine-card.tilt-l {
+  transform: rotate(-1.4deg);
+}
+
+.zine-card.inverted {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--paper);
+  box-shadow: 6px 6px 0 var(--blood);
+}
+
+.censor-bar {
+  display: block;
+  width: 100%;
+  height: 14px;
+  background: var(--blood);
+  margin: 0.5rem 0 1rem;
+}
+
+.censor-bar.thin {
+  height: 6px;
+}
+
+.censor-bar.ink {
+  background: var(--ink);
+}
+
+.tape {
+  position: absolute;
+  width: 90px;
+  height: 22px;
+  background: rgba(245, 241, 234, 0.88);
+  border: 1px solid rgba(10,10,10,0.18);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+  transform: rotate(-6deg);
+  z-index: 5;
+}
+
+.tape.yellow {
+  background: rgba(255, 220, 90, 0.7);
+}
+
+.tape.right {
+  transform: rotate(7deg);
+}
+
+/* Torn paper bottom edge — zigzag clip-path */
+.torn-bottom {
+  -webkit-clip-path: polygon(
+    0 0, 100% 0, 100% calc(100% - 18px),
+    96% 100%, 92% calc(100% - 14px), 88% 100%, 84% calc(100% - 16px),
+    80% 100%, 76% calc(100% - 12px), 72% 100%, 68% calc(100% - 18px),
+    64% 100%, 60% calc(100% - 10px), 56% 100%, 52% calc(100% - 18px),
+    48% 100%, 44% calc(100% - 12px), 40% 100%, 36% calc(100% - 16px),
+    32% 100%, 28% calc(100% - 10px), 24% 100%, 20% calc(100% - 18px),
+    16% 100%, 12% calc(100% - 14px), 8% 100%, 4% calc(100% - 16px),
+    0 100%
+  );
+  clip-path: polygon(
+    0 0, 100% 0, 100% calc(100% - 18px),
+    96% 100%, 92% calc(100% - 14px), 88% 100%, 84% calc(100% - 16px),
+    80% 100%, 76% calc(100% - 12px), 72% 100%, 68% calc(100% - 18px),
+    64% 100%, 60% calc(100% - 10px), 56% 100%, 52% calc(100% - 18px),
+    48% 100%, 44% calc(100% - 12px), 40% 100%, 36% calc(100% - 16px),
+    32% 100%, 28% calc(100% - 10px), 24% 100%, 20% calc(100% - 18px),
+    16% 100%, 12% calc(100% - 14px), 8% 100%, 4% calc(100% - 16px),
+    0 100%
+  );
+}
+
+.torn-top {
+  clip-path: polygon(
+    0 18px, 4% 4px, 8% 16px, 12% 6px, 16% 18px, 20% 4px,
+    24% 14px, 28% 6px, 32% 18px, 36% 8px, 40% 16px, 44% 4px,
+    48% 18px, 52% 6px, 56% 14px, 60% 8px, 64% 18px, 68% 4px,
+    72% 16px, 76% 6px, 80% 18px, 84% 8px, 88% 14px, 92% 4px,
+    96% 16px, 100% 6px, 100% 100%, 0 100%
+  );
+}
+
+/* Ransom-note style: every nth child gets a slightly different angle */
+.ransom > * {
+  display: inline-block;
+  padding: 0 0.05em;
+}
+.ransom > *:nth-child(3n) { transform: rotate(-2deg) translateY(-1px); }
+.ransom > *:nth-child(3n+1) { transform: rotate(1.5deg) translateY(1px); }
+.ransom > *:nth-child(5n) { background: var(--blood); color: var(--paper); padding: 0 0.12em; }
+
+/* Heavy black rule */
+.rule {
+  border-top: 4px solid var(--ink);
+  margin: 1.25rem 0;
+}
+
+.rule-red {
+  border-top: 4px solid var(--blood);
+}
+
+/* "Ticker" of ALL-CAPS shouting text — used as section dividers */
+.ticker {
+  font-family: var(--font-anton), Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Big quote mark */
+.quote-mark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 8rem;
+  line-height: 0.6;
+  color: var(--blood);
+}
+
+/* Sticker / dot */
+.sticker {
+  display: inline-block;
+  background: var(--blood);
+  color: var(--paper);
+  padding: 0.2rem 0.6rem;
+  font-family: var(--font-anton), Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+  transform: rotate(-2deg);
+}
+
+.sticker.ink {
+  background: var(--ink);
+}
+
+/* Outline display text */
+.outline-text {
+  -webkit-text-stroke: 2px var(--ink);
+  color: transparent;
+}
+
+.outline-text.red {
+  -webkit-text-stroke-color: var(--blood);
+}
+
+/* Link */
+a.zine-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 3px solid var(--blood);
+  padding-bottom: 1px;
+}
+
+a.zine-link:hover {
+  background: var(--blood);
+  color: var(--paper);
+}
+
+/* Slight skew utility */
+.skew-tiny { transform: skewY(-0.6deg); }
