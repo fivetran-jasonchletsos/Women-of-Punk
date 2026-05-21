@@ -1,0 +1,270 @@
+[
+  {
+    "slug": "times-square",
+    "kind": "film",
+    "title": "Times Square",
+    "year": 1980,
+    "found": true,
+    "imdbId": "tt0081635",
+    "source": "t=Times%20Square&y=1980"
+  },
+  {
+    "slug": "ladies-and-gentlemen-the-fabulous-stains",
+    "kind": "film",
+    "title": "Ladies and Gentlemen, the Fabulous Stains",
+    "year": 1982,
+    "found": true,
+    "imdbId": "tt0082639",
+    "source": "t=Ladies%20and%20Gentlemen%2C%20the%20Fabulous%20Stains&y=1982"
+  },
+  {
+    "slug": "smithereens",
+    "kind": "film",
+    "title": "Smithereens",
+    "year": 1982,
+    "found": true,
+    "imdbId": "tt0084698",
+    "source": "t=Smithereens&y=1982"
+  },
+  {
+    "slug": "desperately-seeking-susan",
+    "kind": "film",
+    "title": "Desperately Seeking Susan",
+    "year": 1985,
+    "found": true,
+    "imdbId": "tt0089017",
+    "source": "t=Desperately%20Seeking%20Susan&y=1985"
+  },
+  {
+    "slug": "border-radio",
+    "kind": "film",
+    "title": "Border Radio",
+    "year": 1987,
+    "found": true,
+    "imdbId": "tt0090766",
+    "source": "t=Border%20Radio&y=1987"
+  },
+  {
+    "slug": "we-are-the-best",
+    "kind": "film",
+    "title": "We Are the Best! (Vi är bäst!)",
+    "year": 2013,
+    "found": true,
+    "imdbId": "tt2364975",
+    "source": "t=We%20Are%20the%20Best!&y=2013"
+  },
+  {
+    "slug": "itty-bitty-titty-committee",
+    "kind": "film",
+    "title": "Itty Bitty Titty Committee",
+    "year": 2007,
+    "found": true,
+    "imdbId": "tt0496328",
+    "source": "t=Itty%20Bitty%20Titty%20Committee&y=2007"
+  },
+  {
+    "slug": "the-runaways",
+    "kind": "film",
+    "title": "The Runaways",
+    "year": 2010,
+    "found": true,
+    "imdbId": "tt1017451",
+    "source": "t=The%20Runaways&y=2010"
+  },
+  {
+    "slug": "cbgb",
+    "kind": "film",
+    "title": "CBGB",
+    "year": 2013,
+    "found": true,
+    "imdbId": "tt1786751",
+    "source": "t=CBGB&y=2013"
+  },
+  {
+    "slug": "hedwig-and-the-angry-inch",
+    "kind": "film",
+    "title": "Hedwig and the Angry Inch",
+    "year": 2001,
+    "found": true,
+    "imdbId": "tt0248845",
+    "source": "t=Hedwig%20and%20the%20Angry%20Inch&y=2001"
+  },
+  {
+    "slug": "green-room",
+    "kind": "film",
+    "title": "Green Room",
+    "year": 2015,
+    "found": true,
+    "imdbId": "tt4062536",
+    "source": "t=Green%20Room&y=2015"
+  },
+  {
+    "slug": "turn-it-around-the-story-of-east-bay-punk",
+    "kind": "film",
+    "title": "Turn It Around: The Story of East Bay Punk",
+    "year": 2017,
+    "found": true,
+    "imdbId": "tt3913194",
+    "source": "t=Turn%20It%20Around%3A%20The%20Story%20of%20East%20Bay%20Punk&y=2017"
+  },
+  {
+    "slug": "foxfire",
+    "kind": "film",
+    "title": "Foxfire",
+    "year": 1996,
+    "found": true,
+    "imdbId": "tt0116353",
+    "source": "t=Foxfire&y=1996"
+  },
+  {
+    "slug": "mi-vida-loca",
+    "kind": "film",
+    "title": "Mi Vida Loca",
+    "year": 1993,
+    "found": true,
+    "imdbId": "tt3124638",
+    "source": "t=Mi%20Vida%20Loca"
+  },
+  {
+    "slug": "gas-food-lodging",
+    "kind": "film",
+    "title": "Gas Food Lodging",
+    "year": 1992,
+    "found": true,
+    "imdbId": "tt0104321",
+    "source": "t=Gas%20Food%20Lodging&y=1992"
+  },
+  {
+    "slug": "the-punk-singer",
+    "kind": "doc",
+    "title": "The Punk Singer",
+    "year": 2013,
+    "found": true,
+    "imdbId": "tt1785612",
+    "source": "t=The%20Punk%20Singer&y=2013"
+  },
+  {
+    "slug": "dont-need-you",
+    "kind": "doc",
+    "title": "Don't Need You: The Herstory of Riot Grrrl",
+    "year": 2005,
+    "found": false
+  },
+  {
+    "slug": "decline-of-western-civilization",
+    "kind": "doc",
+    "title": "The Decline of Western Civilization",
+    "year": 1981,
+    "found": true,
+    "imdbId": "tt0082252",
+    "source": "t=The%20Decline%20of%20Western%20Civilization&y=1981"
+  },
+  {
+    "slug": "decline-of-western-civilization-2",
+    "kind": "doc",
+    "title": "The Decline of Western Civilization Part II: The Metal Years",
+    "year": 1988,
+    "found": true,
+    "imdbId": "tt0094980",
+    "source": "t=The%20Decline%20of%20Western%20Civilization%20Part%20II%3A%20The%20Metal%20Years&y=1988"
+  },
+  {
+    "slug": "decline-of-western-civilization-3",
+    "kind": "doc",
+    "title": "The Decline of Western Civilization Part III",
+    "year": 1998,
+    "found": true,
+    "imdbId": "tt0138393",
+    "source": "t=The%20Decline%20of%20Western%20Civilization%20Part%20III&y=1998"
+  },
+  {
+    "slug": "bad-reputation",
+    "kind": "doc",
+    "title": "Bad Reputation",
+    "year": 2018,
+    "found": true,
+    "imdbId": "tt7525514",
+    "source": "t=Bad%20Reputation&y=2018"
+  },
+  {
+    "slug": "patti-smith-dream-of-life",
+    "kind": "doc",
+    "title": "Patti Smith: Dream of Life",
+    "year": 2008,
+    "found": true,
+    "imdbId": "tt0940620",
+    "source": "t=Patti%20Smith%3A%20Dream%20of%20Life&y=2008"
+  },
+  {
+    "slug": "grrrl-love-and-revolution",
+    "kind": "doc",
+    "title": "Grrrl Love and Revolution: Riot Grrrl NYC",
+    "year": 2016,
+    "found": false
+  },
+  {
+    "slug": "lost-grrrls",
+    "kind": "doc",
+    "title": "Lost Grrrls: Riot Grrrl in Los Angeles",
+    "year": 2015,
+    "found": false,
+    "error": "HTTP 404"
+  },
+  {
+    "slug": "poly-styrene-i-am-a-cliche",
+    "kind": "doc",
+    "title": "Poly Styrene: I Am a Cliché",
+    "year": 2021,
+    "found": true,
+    "imdbId": "tt7206446",
+    "source": "t=Poly%20Styrene%3A%20I%20Am%20a%20Clich%C3%A9&y=2021"
+  },
+  {
+    "slug": "her-aim-is-true",
+    "kind": "doc",
+    "title": "Her Aim Is True",
+    "year": 2011,
+    "found": true,
+    "imdbId": "tt3149612",
+    "source": "t=Her%20Aim%20Is%20True"
+  },
+  {
+    "slug": "beth-ditto-the-gossip",
+    "kind": "doc",
+    "title": "Gossip — All My Lovers",
+    "year": 2009,
+    "found": false
+  },
+  {
+    "slug": "punks-not-dead",
+    "kind": "doc",
+    "title": "Punk's Not Dead",
+    "year": 2007,
+    "found": true,
+    "imdbId": "tt0350002",
+    "source": "t=Punk's%20Not%20Dead&y=2007"
+  },
+  {
+    "slug": "kim-gordon-she-bop",
+    "kind": "doc",
+    "title": "Kim Gordon: This Woman's Work",
+    "year": 2022,
+    "found": false
+  },
+  {
+    "slug": "i-dream-of-wires",
+    "kind": "doc",
+    "title": "Bikini Kill: It's So Hard to Live",
+    "year": 2019,
+    "found": false
+  },
+  {
+    "slug": "pretend-were-dead-l7",
+    "kind": "doc",
+    "title": "L7: Pretend We're Dead",
+    "year": 2016,
+    "found": true,
+    "imdbId": "tt6288290",
+    "source": "t=L7%3A%20Pretend%20We're%20Dead&y=2016"
+  }
+]
