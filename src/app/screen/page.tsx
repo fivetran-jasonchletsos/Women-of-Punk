@@ -3,6 +3,8 @@ import { docs } from "@/lib/data/docs";
 
 export const metadata = { title: "Screen — Women of Punk" };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function ScreenPage() {
   return (
     <>
@@ -37,20 +39,38 @@ export default function ScreenPage() {
             />
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {films.map((f, i) => (
-                <article
-                  key={f.slug}
-                  className={`zine-card ${i % 3 === 0 ? "tilt-l" : i % 3 === 2 ? "tilt-r" : ""}`}
-                >
-                  <div className="sticker absolute -top-3 -left-2">{f.year}</div>
-                  <h3 className="shout text-2xl tracking-razor mt-2">{f.title}</h3>
-                  <p className="type text-xs uppercase opacity-70">
-                    dir. {f.director}
-                  </p>
-                  <div className="censor-bar thin mt-2" />
-                  <p className="type text-sm mt-2 leading-relaxed">{f.why}</p>
-                </article>
-              ))}
+              {films.map((f, i) => {
+                const poster = f.poster ? `${basePath}${f.poster}` : null;
+                return (
+                  <article
+                    key={f.slug}
+                    className={`zine-card ${i % 3 === 0 ? "tilt-l" : i % 3 === 2 ? "tilt-r" : ""}`}
+                  >
+                    <div className="sticker absolute -top-3 -left-2">{f.year}</div>
+                    {poster ? (
+                      <div className="relative -mt-2 mb-3 overflow-hidden border-[3px] border-ink">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={poster}
+                          alt={`${f.title} poster`}
+                          className="w-full aspect-[2/3] object-cover block"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <div className="ink-bg text-paper aspect-[2/3] mb-3 grid place-items-center border-[3px] border-ink">
+                        <span className="shout text-5xl text-blood">{f.year}</span>
+                      </div>
+                    )}
+                    <h3 className="shout text-2xl tracking-razor mt-2 leading-tight">{f.title}</h3>
+                    <p className="type text-xs uppercase opacity-70">
+                      dir. {f.director}
+                    </p>
+                    <div className="censor-bar thin mt-2" />
+                    <p className="type text-sm mt-2 leading-relaxed">{f.why}</p>
+                  </article>
+                );
+              })}
             </div>
           )}
         </div>
@@ -70,21 +90,39 @@ export default function ScreenPage() {
             />
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {docs.map((d, i) => (
-                <article
-                  key={d.slug}
-                  className={`zine-card ${i % 2 === 0 ? "tilt-r" : "tilt-l"}`}
-                >
-                  <div className="sticker absolute -top-3 -right-2">{d.year}</div>
-                  <h3 className="shout text-2xl tracking-razor">{d.title}</h3>
-                  <p className="type text-xs uppercase opacity-70">on {d.subject}</p>
-                  {d.director && (
-                    <p className="type text-xs opacity-60">dir. {d.director}</p>
-                  )}
-                  <div className="censor-bar thin mt-2" />
-                  <p className="type text-sm mt-2 leading-relaxed">{d.why}</p>
-                </article>
-              ))}
+              {docs.map((d, i) => {
+                const poster = d.poster ? `${basePath}${d.poster}` : null;
+                return (
+                  <article
+                    key={d.slug}
+                    className={`zine-card ${i % 2 === 0 ? "tilt-r" : "tilt-l"}`}
+                  >
+                    <div className="sticker absolute -top-3 -right-2">{d.year}</div>
+                    {poster ? (
+                      <div className="relative -mt-2 mb-3 overflow-hidden border-[3px] border-ink">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={poster}
+                          alt={`${d.title} poster`}
+                          className="w-full aspect-[2/3] object-cover block"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <div className="ink-bg text-paper aspect-[2/3] mb-3 grid place-items-center border-[3px] border-ink">
+                        <span className="shout text-3xl text-blood text-center px-3">DOC</span>
+                      </div>
+                    )}
+                    <h3 className="shout text-2xl tracking-razor leading-tight">{d.title}</h3>
+                    <p className="type text-xs uppercase opacity-70">on {d.subject}</p>
+                    {d.director && (
+                      <p className="type text-xs opacity-60">dir. {d.director}</p>
+                    )}
+                    <div className="censor-bar thin mt-2" />
+                    <p className="type text-sm mt-2 leading-relaxed">{d.why}</p>
+                  </article>
+                );
+              })}
             </div>
           )}
         </div>
