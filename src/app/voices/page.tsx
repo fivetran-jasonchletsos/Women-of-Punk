@@ -1,5 +1,8 @@
-import { quotes } from "@/lib/data/quotes";
+import { quotes as quotesBase } from "@/lib/data/quotes";
+import { quotesExtras } from "@/lib/data/quotes-extras";
 import RansomNote from "@/components/RansomNote";
+
+const quotes = [...quotesBase, ...quotesExtras];
 
 export const metadata = { title: "Voices — Women of Punk" };
 
