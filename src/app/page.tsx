@@ -2,6 +2,20 @@ import Link from "next/link";
 import RansomNote from "@/components/RansomNote";
 import Waveform from "@/components/Waveform";
 import Typewriter from "@/components/Typewriter";
+import { bands } from "@/lib/data/bands";
+import { albums as albumsBase } from "@/lib/data/albums";
+import { albumsExtras } from "@/lib/data/albums-extras";
+import { quotes } from "@/lib/data/quotes";
+import { quotesExtras } from "@/lib/data/quotes-extras";
+import { films } from "@/lib/data/films";
+import { docs } from "@/lib/data/docs";
+import { books } from "@/lib/data/books";
+import { stories } from "@/lib/data/stories";
+import { photos } from "@/lib/data/photos";
+
+const totalAlbums = albumsBase.length + albumsExtras.length;
+const totalQuotes = quotes.length + quotesExtras.length;
+const totalScreen = films.length + docs.length;
 
 export default function HomePage() {
   return (
@@ -44,6 +58,17 @@ export default function HomePage() {
             didn&rsquo;t ask permission and don&rsquo;t need yours either.
           </p>
 
+          {/* Receipts strip */}
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 type text-sm opacity-80 uppercase tracking-[0.25em]">
+            <span><span className="text-blood font-bold">{bands.length}</span> bands</span>
+            <span><span className="text-blood font-bold">{totalAlbums}</span> records</span>
+            <span><span className="text-blood font-bold">{totalScreen}</span> films &amp; docs</span>
+            <span><span className="text-blood font-bold">{books.length}</span> books</span>
+            <span><span className="text-blood font-bold">{photos.length}</span> photos</span>
+            <span><span className="text-blood font-bold">{stories.length}</span> stories</span>
+            <span><span className="text-blood font-bold">{totalQuotes}</span> voices</span>
+          </div>
+
           {/* Joy Division waveform between hero text and CTAs */}
           <div className="mt-12 waveform-block">
             <Waveform lines={70} height={260} />
@@ -66,19 +91,31 @@ export default function HomePage() {
 
       {/* TICKER */}
       <div className="ticker overflow-hidden whitespace-nowrap">
-        <span className="inline-block px-4">SLITS</span>
-        <span className="inline-block px-4 text-blood">X-RAY SPEX</span>
-        <span className="inline-block px-4">BIKINI KILL</span>
+        <span className="inline-block px-4">PATTI</span>
         <span className="inline-block px-4 text-blood">SIOUXSIE</span>
-        <span className="inline-block px-4">L7</span>
-        <span className="inline-block px-4 text-blood">BUSH TETRAS</span>
-        <span className="inline-block px-4">RAINCOATS</span>
-        <span className="inline-block px-4 text-blood">PATTI</span>
-        <span className="inline-block px-4">EXENE</span>
-        <span className="inline-block px-4 text-blood">POLY</span>
-        <span className="inline-block px-4">VIV</span>
-        <span className="inline-block px-4 text-blood">KATHLEEN</span>
-        <span className="inline-block px-4">PRETTY ON THE INSIDE</span>
+        <span className="inline-block px-4">DEBBIE</span>
+        <span className="inline-block px-4 text-blood">JOAN</span>
+        <span className="inline-block px-4">POLY</span>
+        <span className="inline-block px-4 text-blood">VIV</span>
+        <span className="inline-block px-4">ARI</span>
+        <span className="inline-block px-4 text-blood">EXENE</span>
+        <span className="inline-block px-4">ALICE</span>
+        <span className="inline-block px-4 text-blood">PENELOPE</span>
+        <span className="inline-block px-4">WENDY O</span>
+        <span className="inline-block px-4 text-blood">LYDIA</span>
+        <span className="inline-block px-4">KIM D</span>
+        <span className="inline-block px-4 text-blood">KIM G</span>
+        <span className="inline-block px-4">CHRISSIE</span>
+        <span className="inline-block px-4 text-blood">COURTNEY</span>
+        <span className="inline-block px-4">KATHLEEN</span>
+        <span className="inline-block px-4 text-blood">CORIN</span>
+        <span className="inline-block px-4">CARRIE</span>
+        <span className="inline-block px-4 text-blood">PJ</span>
+        <span className="inline-block px-4">JUSTINE</span>
+        <span className="inline-block px-4 text-blood">KAREN O</span>
+        <span className="inline-block px-4">BRODY</span>
+        <span className="inline-block px-4 text-blood">LAURA JANE</span>
+        <span className="inline-block px-4">AMY T</span>
       </div>
 
       {/* THESIS */}
@@ -121,10 +158,10 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-6">
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {secondary.map((s, i) => (
               <Link href={s.href} key={s.href} className="block">
-                <article className={`zine-card inverted ${i % 2 === 0 ? "tilt-r" : "tilt-l"}`}>
+                <article className={`zine-card inverted ${i % 3 === 0 ? "tilt-r" : i % 3 === 2 ? "tilt-l" : ""}`}>
                   <h2 className="shout text-4xl tracking-razor">{s.title}</h2>
                   <p className="type mt-2 text-sm opacity-90">{s.blurb}</p>
                   <div className="mt-3 shout text-base text-blood">ENTER &rarr;</div>
@@ -185,9 +222,33 @@ const secondary = [
       "Quotes. Sneers. Manifestos. What they said when somebody finally pointed a microphone at them."
   },
   {
+    href: "/gallery",
+    title: "GALLERY",
+    blurb:
+      "The frames that made the myth. Mapplethorpe. Leibovitz. Gruen. Stein. Beckman. Lavine. Credit, context, links to the museums that hold them."
+  },
+  {
+    href: "/posters",
+    title: "POSTERS",
+    blurb:
+      "Flyers, marquees, bills. The nights that mattered, captured in ink on cheap paper."
+  },
+  {
+    href: "/stories",
+    title: "STORIES",
+    blurb:
+      "Patti and Robert in a Brooklyn doorway. Joan rejected by twenty-three labels. Siouxsie&rsquo;s twenty-minute Lord&rsquo;s Prayer. The campfire stories of the genre."
+  },
+  {
     href: "/timeline",
     title: "TIMELINE",
     blurb:
       "Forty-plus years of refusal, on a single scrolling page. With red ink where it matters."
+  },
+  {
+    href: "/gift",
+    title: "FOR HER",
+    blurb:
+      "Why this exists. A note from the friend who built it. Take and remix; no rights reserved."
   }
 ];
