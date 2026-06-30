@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Grain from "@/components/Grain";
 import TransitionFlash from "@/components/TransitionFlash";
+import Script from "next/script";
 
 const anton = Anton({
   weight: "400",
@@ -60,6 +61,7 @@ export default function RootLayout({
         <Footer />
         <Grain />
         <TransitionFlash />
+        <Script src="/feedback-widget.js" strategy="afterInteractive" />
       </body>
     </html>
   );
